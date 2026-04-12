@@ -58,22 +58,29 @@ class FormPage extends BasePage {
     console.log(`✅ Textbox filled with: ${text}`);
   }
 
-  async uploadFileInRunningForm(filePath) {
-    await this.page.screenshot({ path: 'test-results/running-form-upload.png' });
-    console.log('Current URL upload:', this.page.url());
-    const fileInput = this.page.locator('input[type="file"]');
-    if (await fileInput.count() > 0) {
-      await fileInput.setInputFiles(filePath);
-      console.log(`✅ File set via input: ${filePath}`);
-    } else {
-      const [fileChooser] = await Promise.all([
-        this.page.waitForEvent('filechooser'),
-        this.page.getByText('browse').click(),
-      ]);
-      await fileChooser.setFiles(filePath);
-      console.log(`✅ File set via filechooser: ${filePath}`);
-    }
-    await this.page.waitForTimeout(1000);
+  // async uploadFileInRunningForm(filePath) {
+  //   await this.page.screenshot({ path: 'test-results/running-form-upload.png' });
+  //   console.log('Current URL upload:', this.page.url());
+  //   const fileInput = this.page.locator('input[type="file"]');
+  //   if (await fileInput.count() > 0) {
+  //     await fileInput.setInputFiles(filePath);
+  //     console.log(`✅ File set via input: ${filePath}`);
+  //   } else {
+  //     const [fileChooser] = await Promise.all([
+  //       this.page.waitForEvent('filechooser'),
+  //       this.page.getByText('browse').click(),
+  //     ]);
+  //     await fileChooser.setFiles(filePath);
+  //     console.log(`✅ File set via filechooser: ${filePath}`);
+  //   }
+  //   await this.page.waitForTimeout(1000);
+  // }
+
+  async uploadFileInRunningForm() {
+    // Pause here for manual file upload
+    console.log('⏸️ MANUAL STEP: Please upload the file manually, then resume');
+    await this.page.pause();
+    console.log('✅ Manual file upload done - resumed');
   }
 
   async submitRunningForm() {

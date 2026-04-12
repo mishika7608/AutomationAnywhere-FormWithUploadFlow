@@ -64,8 +64,11 @@ const runningForm = new FormPage(runningPage);
 await runningForm.fillTextboxInRunningForm('Sample Input Text');
 
 // ── STEP 15: Upload file ──────────────────────────────────────────────
-console.log('\n📌 STEP 15: Upload file');
-await runningForm.uploadFileInRunningForm('test-data/sample.pdf');
+// console.log('\n📌 STEP 15: Upload file');
+// await runningForm.uploadFileInRunningForm('test-data/sample.pdf');
+// ── STEP 15: Upload file (MANUAL) ─────────────────────────────────────
+console.log('\n📌 STEP 15: Upload file - MANUAL STEP');
+await runningForm.uploadFileInRunningForm();
 
 // ── STEP 16: Submit form ──────────────────────────────────────────────
 console.log('\n📌 STEP 16: Submit form');
